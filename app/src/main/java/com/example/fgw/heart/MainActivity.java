@@ -13,16 +13,24 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class MainActivity extends AppCompatActivity {
-    EditText weight;
+    EditText weight, tem, sug, h;
     Button calculate;
-    DatabaseReference databaseReference;
+    DatabaseReference databaseReference,databaseReference1,databaseReference2,databaseReference3;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         weight = findViewById(R.id.editText2);
+        tem = findViewById(R.id.editText3);
+//        sug = findViewById(R.id.editText);
+        h = findViewById(R.id.editText4);
+
         calculate = findViewById(R.id.button);
-        databaseReference = FirebaseDatabase.getInstance().getReference("weight");
+        databaseReference = FirebaseDatabase.getInstance().getReference("weight").child(System.currentTimeMillis() + "");
+        databaseReference1 = FirebaseDatabase.getInstance().getReference("height").child(System.currentTimeMillis() + "");
+        databaseReference2 = FirebaseDatabase.getInstance().getReference("Age").child(System.currentTimeMillis() + "");
+        //databaseReference3 = FirebaseDatabase.getInstance().getReference("Sugar Levels").child(System.currentTimeMillis() + "");
+
 
 //        Typeface typeface = Typeface.createFromAsset(getAssets(), "keepcalm.ttf");
 //
@@ -33,6 +41,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 databaseReference.setValue(weight.getText().toString());
+                databaseReference1.setValue(h.getText().toString());
+                databaseReference2.setValue(tem.getText().toString());
+                databaseReference3.setValue(sug.getText().toString());
+
                 startActivity(new Intent(MainActivity.this, dietAssist.class));
 
                 //String url = "https://console.dialogflow.com/api-client/demo/embedded/42b2370d-1d00-46c7-8708-bf032657ac4a";

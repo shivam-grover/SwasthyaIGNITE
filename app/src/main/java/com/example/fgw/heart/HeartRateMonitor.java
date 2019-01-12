@@ -173,7 +173,7 @@ public class HeartRateMonitor extends Activity {
 
             long endTime = System.currentTimeMillis();
             double totalTimeInSecs = (endTime - startTime) / 1000d;
-            if ((totalTimeInSecs >= 2) && (totalTimeInSecs < 20)) {
+            if (totalTimeInSecs >= 10) {
                 int ik = 0;
                 double bps = (beats / totalTimeInSecs);
                 int dpm = (int) (bps * 60d);

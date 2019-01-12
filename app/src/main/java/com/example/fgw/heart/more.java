@@ -14,6 +14,7 @@ public class more extends AppCompatActivity {
         setContentView(R.layout.activity_more);
         poll = findViewById(R.id.poll);
         doctor = findViewById(R.id.doctor);
+
         poll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -26,6 +27,8 @@ public class more extends AppCompatActivity {
                 startActivity(new Intent(more.this, chatbothealth.class));
             }
         });
+
+
 
     }
 }
